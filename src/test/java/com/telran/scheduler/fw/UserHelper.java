@@ -11,7 +11,7 @@ public class UserHelper extends HelperBase {
     }
 
     public void login(User user) {
-      waitForElement(By.id("log_email_input"),20);
+    //  waitForElement(By.id("log_email_input"),10);
         type(By.id("log_email_input"), user.getEmail());
         type(By.id("log_password_input"), user.getPassword());
 

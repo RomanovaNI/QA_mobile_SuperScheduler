@@ -15,11 +15,12 @@ public class AppManager {
     AppiumDriver driver;
     DesiredCapabilities capabilities;
 
+    UserHelper user;
+
     public UserHelper user() {
         return user;
     }
 
-    UserHelper user;
 
     public void init() throws MalformedURLException {
         capabilities=new DesiredCapabilities();
@@ -35,7 +36,7 @@ public class AppManager {
 
         driver=new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
-       // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         user=new UserHelper(driver);
     }
 

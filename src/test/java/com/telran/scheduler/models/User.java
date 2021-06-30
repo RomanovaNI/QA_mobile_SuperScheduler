@@ -1,7 +1,7 @@
 package com.telran.scheduler.models;
 
 public class User {
-    private  String email;
+    private String email;
     private String password;
 
     public User setEmail(String email) {
@@ -13,8 +13,6 @@ public class User {
         this.password = password;
         return this;
     }
-
-
 
     public String getEmail() {
         return email;

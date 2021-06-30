@@ -9,7 +9,8 @@ public class LoginTests extends TestBase {
     @Test
     public void loginPositiveTest() {
     //   app.user().waitForElement(By.id("log_email_input"),20);
-        app.user().login(new User().setEmail("ll@ll.ua").setPassword("123456Ll"));
+
+        app.user().login(new User().setEmail("ll@ll.ua").setPassword("12345678Ll"));
 
     }
 

@@ -14,24 +14,21 @@ public class HelperBase {
         this.driver = driver;
     }
 
-
     public void tap(By locator) {
         driver.findElement(locator).click();
     }
 
     public void type(By locator, String text) {
-       /* if (text != null) {
-            if (!text.equals(driver.findElement(locator).getText())) {*/
+        if (text!=null) {
+            if(!text.equals(driver.findElement(locator).getText())) {
                 tap(locator);
                 driver.findElement(locator).clear();
                 driver.findElement(locator).sendKeys(text);
-       //     }
-     //   }
+            }
+        }
     }
 
-    public WebElement waitForElement(By locator, int timeOut){
-
+    public WebElement waitForElement(By locator, int timeOut) {
         return new WebDriverWait(driver,timeOut).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
-
 }
