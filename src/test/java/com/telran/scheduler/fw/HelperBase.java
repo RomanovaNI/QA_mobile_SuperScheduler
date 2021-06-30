@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.NoSuchElementException;
+
 public class HelperBase {
 
     AppiumDriver driver;
@@ -19,8 +21,8 @@ public class HelperBase {
     }
 
     public void type(By locator, String text) {
-        if (text!=null) {
-            if(!text.equals(driver.findElement(locator).getText())) {
+        if (text != null) {
+            if (!text.equals(driver.findElement(locator).getText())) {
                 tap(locator);
                 driver.findElement(locator).clear();
                 driver.findElement(locator).sendKeys(text);
@@ -29,6 +31,15 @@ public class HelperBase {
     }
 
     public WebElement waitForElement(By locator, int timeOut) {
-        return new WebDriverWait(driver,timeOut).until(ExpectedConditions.presenceOfElementLocated(locator));
+        return new WebDriverWait(driver, timeOut).until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    public boolean isElementPresent(By locator) {
+        try {
+            driver.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
     }
 }
