@@ -15,8 +15,22 @@ public class UserHelper extends HelperBase {
         //  waitForElement(By.id("log_email_input"),10);
         type(By.id("log_email_input"), user.getEmail());
         type(By.id("log_password_input"), user.getPassword());
-        driver.hideKeyboard();
+        hideKeyboard();
         tap(By.id("login_btn"));
-        Assert.assertTrue(isElementPresent(By.id("wizard_settings_title")));
+        //  Assert.assertTrue(isElementPresent(By.id("wizard_settings_title")));
+    }
+
+    public void defaultlogin() {
+        login(new User().setEmail("kk89@ll.ua").setPassword("12345678Ll"));
+
+    }
+    public void newProfile() {
+        login(new User().setEmail("new1@new.new").setPassword("New12345678"));
+
+    }
+
+    public void fillLoginForm(User user) {
+        waitForElementandType(By.id("log_email_input"), 5, user.getEmail());
+        type(By.id("log_password_input"), user.getPassword());
     }
 }

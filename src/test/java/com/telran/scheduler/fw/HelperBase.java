@@ -35,11 +35,21 @@ public class HelperBase {
     }
 
     public boolean isElementPresent(By locator) {
-        try {
-            driver.findElement(locator);
-            return true;
-        } catch (NoSuchElementException ex) {
-            return false;
+      return driver.findElements(locator).size()>0;
+    }
+   public void hideKeyboard() {
+        driver.hideKeyboard();
+    }
+    public void waitForElementAndTap(By locator, int timeOut){
+        new WebDriverWait(driver, timeOut).until(ExpectedConditions.presenceOfElementLocated(locator)).click();
+    }
+    public void waitForElementandType(By locator, int timeOut, String text){
+        if (text!=null){
+            waitForElementAndTap(locator, timeOut);
+            driver.findElement(locator).clear();
+            driver.findElement(locator).sendKeys(text);
+
         }
+
     }
 }
