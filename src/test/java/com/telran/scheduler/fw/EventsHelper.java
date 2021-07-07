@@ -6,8 +6,10 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
+import java.util.List;
 
 public class EventsHelper extends HelperBase {
     public EventsHelper(AppiumDriver driver) {
@@ -67,6 +69,13 @@ public class EventsHelper extends HelperBase {
 
     public void saveEvent() {
         tap(By.id("info_save_btn"));
+    }
+
+    public int  getTotalEvents(){
+        List<WebElement> id=driver.findElements(By.id("row_container_main"));
+        int idCount= id.size();
+        System.out.println("Total events quantity: "+idCount);
+        return idCount;
     }
 
 }

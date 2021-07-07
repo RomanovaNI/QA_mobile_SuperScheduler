@@ -5,6 +5,8 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import java.util.Random;
+
 public class UserHelper extends HelperBase {
 
     public UserHelper(AppiumDriver driver) {
@@ -24,8 +26,10 @@ public class UserHelper extends HelperBase {
         login(new User().setEmail("kk89@ll.ua").setPassword("12345678Ll"));
 
     }
-    public void newProfile() {
-        login(new User().setEmail("new1@new.new").setPassword("New12345678"));
+    public void registerNewProfile() {
+        Random random=new Random();
+        int r= random.nextInt(1000);
+        login(new User().setEmail("new"+r+"@new.new").setPassword("New12345678"));
 
     }
 
